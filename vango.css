@@ -1,0 +1,71 @@
+/* ===================================================================
+   vango.css : ONE shared stylesheet for every VanGo page.
+   Every page has a commented-out <link> to this file. Un-comment that link
+   (it must come AFTER the Bootstrap link) and the whole app is restyled at once.
+   WHY a shared file: the example files each carried their own copy of this CSS,
+   and with 5+ pages the copies drift apart. One file means one place to edit.
+   =================================================================== */
+
+/* 1. PALETTE
+   These variables recolor everything Bootstrap builds from the "primary" and "warning"
+   colors: bg-primary, text-primary, border-warning, bg-warning, and so on.
+   Edit the hex values here and the header, underline and page background all follow. */
+:root {
+  --bs-primary: #0b2545;          /* navy */
+  --bs-primary-rgb: 11, 37, 69;   /* same navy as R,G,B (bg-primary and text-primary read this one) */
+  --bs-warning: #f5b700;          /* amber */
+  --bs-warning-rgb: 245, 183, 0;
+  --bs-body-bg: #f9f8f4;          /* cream page background */
+}
+
+/* 2. BUTTONS AND PROGRESS BAR
+   IMPORTANT: in Bootstrap 5.3 the .btn-* classes do NOT read --bs-primary.
+   Each one has its own hard-coded blue, so step 1 alone leaves every button blue.
+   These rules set the button variables directly. Change a hex here to change that
+   button state everywhere (hover, pressed, selected, disabled). */
+.btn-primary {
+  --bs-btn-bg: #0b2545;
+  --bs-btn-border-color: #0b2545;
+  --bs-btn-hover-bg: #12345f;
+  --bs-btn-hover-border-color: #12345f;
+  --bs-btn-active-bg: #081c35;
+  --bs-btn-active-border-color: #081c35;
+  --bs-btn-disabled-bg: #0b2545;
+  --bs-btn-disabled-border-color: #0b2545;
+}
+.btn-outline-primary {
+  --bs-btn-color: #0b2545;
+  --bs-btn-border-color: #0b2545;
+  --bs-btn-hover-bg: #0b2545;
+  --bs-btn-hover-border-color: #0b2545;
+  --bs-btn-active-bg: #0b2545;          /* also the "selected" color of the IN/OUT and route toggles */
+  --bs-btn-active-border-color: #0b2545;
+  --bs-btn-disabled-color: #0b2545;
+  --bs-btn-disabled-border-color: #0b2545;
+}
+.progress {
+  --bs-progress-bar-bg: #f5b700;        /* the capacity bar on the passengers page */
+}
+
+/* 3. PHONE-SIZED SCREEN
+   Keeps the app narrow on a laptop or projector, like the Figma phone frame.
+   Add class="screen" to the page wrapper. Change 480px to make it wider or narrower. */
+.screen {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* 4. BUTTON LOOK: thicker outline, rounder corners, taller tap area.
+   Add class="btn-vango" next to a button's other classes. */
+.btn-vango {
+  border-width: 2px;
+  border-radius: .75rem;
+  font-weight: 700;
+  padding: .9rem 1rem;
+}
+
+/* 5. CARD LOOK: rounder card with no outline. Add class="vango-card" to a card. */
+.vango-card {
+  border: 0;
+  border-radius: 1rem;
+}
