@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VanGo | Record Passengers</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vango.css" rel="stylesheet">
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <div class="d-flex flex-column min-vh-100">
+
+    <header class="bg-primary text-white p-3 border-bottom border-warning border-4">
+      <div class="small">Van ABC 1234</div>
+      <h1 class="h4 fw-bold mb-0">Passengers</h1>
+    </header>
+
+    <main class="flex-grow-1 d-flex flex-column p-3">
+
+      <!-- BOARDED CARD: the - / count / + counter.
+           text-center centers the helper text. d-flex + justify-content-between puts
+           the minus button left, the number in the middle and the plus button right.
+           THE BUTTONS: btn-outline-primary (minus) and btn-primary (plus) are the same
+           two button styles used on other pages, which keeps the design consistent.
+           rounded-circle turns them into circles. -->
+
+      <div class="card mb-3">
+        <div class="card-body text-center">
+          <div class="text-start small fw-semibold text-secondary mb-3">Boarded</div>
+
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <!-- type="button" is important: without it a button inside a form would try
+                 to submit it. -->
+            <button type="button" id="minusBtn"
+                    class="btn btn-outline-primary rounded-circle fs-3 p-0"
+                    style="width:58px; height:58px;">&minus;</button>
+
+            <!-- <output> is the HTML element for "a calculated result".
+                 TO CUSTOMIZE: display-3 -> display-1 for an even bigger number; the
+                 starting 0 is just placeholder text, the script sets the real value. -->
+            <output id="count" class="display-3 fw-bold">0</output>
+
+            <button type="button" id="plusBtn"
+                    class="btn btn-primary rounded-circle fs-3 p-0"
+                    style="width:58px; height:58px;">+</button>
+          </div>
+
+          <div class="small text-secondary">Tap + for each boarding passenger</div>
+        </div>
+      </div>
+
+      <!-- CAPACITY CARD: Bootstrap's "progress" component draws the bar.
+           The outer div is the gray track; the inner div (progress-bar) is the filled
+           part, and its inline width is set by the script (width: 44% and so on).
+           role="progressbar" and the aria-value* attributes let assistive technology
+           read it as "7 out of 16". The script keeps aria-valuenow in sync.
+           TO CUSTOMIZE: the van capacity (16) appears in aria-valuemax here AND as
+           CAPACITY in the script. Change both, or the bar and the limit disagree.
+           To change the bar color, swap the class on the inner div, e.g. add
+           "bg-warning" (the script can add it when the van is nearly full). -->
+      <div class="card">
+        <div class="card-body">
+          <div class="small fw-semibold text-secondary mb-2">Capacity</div>
+          <div class="progress" role="progressbar" id="capacityTrack">
+            <div class="progress-bar" id="capacityBar" style="width: 0%"></div>
+          </div>
+          <div class="small text-secondary mt-2" id="capacityLabel">0 of 16</div>
+        </div>
+      </div>
+
+      <!-- It is a link, since it just
+           moves to the next page (GPS sharing). That page is not built yet, so
+           this link is dead until gps-sharing.html exists. -->
+      <a href="gps-sharing.html" class="btn btn-outline-primary w-100 mt-auto">
+        Next: GPS sharing
+      </a>
+
+    </main>
+  </div>
+
+  <!-- THE COUNTER SCRIPT. This one is NOT commented out, because without it the
+       + and - buttons would do nothing. It is deliberately small:
+         1. count holds the number.
+         2. render() redraws the number, the bar and the label from count.
+         3. each button changes count by 1, then calls render().
+       "Single place that knows the number" means you can never end up with the
+       big number saying 7 while the bar says 8. -->
+  <script>
+    // The maximum seat count
+    const CAPACITY = 16;
+
+    // The starting number
+    let count = 0;
+
+    const countEl  = document.getElementById("count");
+    const barEl    = document.getElementById("capacityBar");
+    const trackEl  = document.getElementById("capacityTrack");
+    const labelEl  = document.getElementById("capacityLabel");
+    const minusBtn = document.getElementById("minusBtn");
+    const plusBtn  = document.getElementById("plusBtn");
+
+    function render() {
+      countEl.textContent = count;
+      barEl.style.width = (count / CAPACITY * 100) + "%";
+      trackEl.setAttribute("aria-valuenow", count);
+      labelEl.textContent = count + " of " + CAPACITY;
+
+      // Stop at the limits so the number can never go below 0 or above the capacity.
+      minusBtn.disabled = count <= 0;
+      plusBtn.disabled  = count >= CAPACITY;
+    }
+
+    minusBtn.addEventListener("click", () => { count--; render(); });
+    plusBtn.addEventListener("click",  () => { count++; render(); });
+
+    render();   
+
+  </script>
+
+</body>
+</html>

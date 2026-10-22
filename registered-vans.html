@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VanGo | Registered Vans</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vango.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- In case na gamitin yung js functionalities ng bootstrap. -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- PAGE WRAPPER: header, content and bottom button stacked in a column.
+       min-vh-100 makes it at least as tall as the screen, which is what lets the
+       button sit at the bottom.
+       TO CUSTOMIZE: add "screen" (from vango.css) for the phone width,
+       e.g. class="screen d-flex flex-column min-vh-100". -->
+  <div class="d-flex flex-column min-vh-100">
+    <header class="bg-primary text-white p-3 border-bottom border-warning border-4
+                   d-flex justify-content-between align-items-center">
+      <div>
+        <div class="small">Admin</div>
+        <h1 class="h4 fw-bold mb-0">Registered Vans</h1>
+      </div>
+    </header>
+
+    <!-- MAIN: flex-grow-1 takes all leftover height, which pushes the button down. -->
+    <main class="flex-grow-1 d-flex flex-column p-3">
+      <div class="card">
+        <ul class="list-group list-group-flush" id="vanList">
+          
+          <li class="list-group-item d-flex justify-content-between">
+            
+            <div>
+              <div class="fw-bold">ABC 1234</div>
+              <div class="text-secondary small">Driver: Jungkick S.</div>
+            </div>
+            <span class="text-secondary">Lipa</span>
+          
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between">
+
+            <div>
+              <div class="fw-bold">XYZ 5678</div>
+              <div class="text-secondary small">Operator: Banana T.</div>
+            </div>
+            <span class="text-secondary">San Pablo</span>
+          
+          </li>
+
+          <li class="list-group-item d-flex justify-content-between">
+
+            <div>
+              <div class="fw-bold">DEF 9012</div>
+              <div class="text-secondary small">Driver: Applelina N.</div>
+            </div>
+            <span class="text-secondary">Lipa</span>
+
+          </li>
+
+        </ul>
+      </div>
+
+      <!-- BOTTOM BUTTON. mt-auto only works because <main> is a flex column.
+           Use <a> for moving between pages, <button> for actions like saving. -->
+      <a href="admin-menu.html" class="btn btn-outline-primary w-100 mt-auto">
+        Back to Menu
+      </a>
+
+    </main>
+  </div>
+
+</body>
+</html>
