@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VanGo | Set IN and Select Route</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="style-additions.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-shell">
+
+        <!-- Header (phone and tablet; hidden on desktop by style.css) -->
+        <header class="mobile-header">
+            <p class="mobile-header-label mb-1">Van ABC 1234</p>
+            <h1 class="mobile-header-title mb-0">Arrived at Terminal</h1>
+        </header>
+
+        <!-- Sidebar (desktop only). Driver pages highlight "Driver / Operator" -->
+        <aside class="sidebar flex-shrink-0 p-4">
+            <a href="index.html" class="sidebar-brand text-white text-decoration-none">VanGo</a>
+            <nav>
+                <ul class="nav flex-column mt-4">
+                    <li class="nav-item"><span class="nav-link px-0">Passenger</span></li>
+                    <li class="nav-item"><span class="nav-link px-0">Admin</span></li>
+                    <li class="nav-item active"><span class="nav-link px-0">Driver / Operator</span></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main content -->
+        <main class="main main-top flex-grow-1">
+            <div class="content-wide mx-auto d-flex flex-column gap-4">
+
+                <!-- Heading (desktop only) -->
+                <div class="custom-block">
+                    <p class="text-muted-custom mb-1">Van ABC 1234</p>
+                    <h1 class="page-title mb-0">Arrived at Terminal</h1>
+                </div>
+
+                <!-- Form card: two toggles, same pattern as the Role toggle on New Account.
+                     Each pair needs the same name, and every id must match its label's "for". -->
+                <div class="form-card">
+
+                    <div>
+                        <span class="field-label">Route</span>
+                        <div class="role-toggle">
+                            <input type="radio" class="btn-check" name="route" id="route-lipa" value="lipa" checked>
+                            <label class="role-option" for="route-lipa">Lipa</label>
+
+                            <input type="radio" class="btn-check" name="route" id="route-san-pablo" value="san-pablo">
+                            <label class="role-option" for="route-san-pablo">San Pablo</label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span class="field-label">Status</span>
+                        <div class="role-toggle">
+                            <input type="radio" class="btn-check" name="status" id="status-in" value="in" checked>
+                            <label class="role-option" for="status-in">IN</label>
+
+                            <input type="radio" class="btn-check" name="status" id="status-out" value="out">
+                            <label class="role-option" for="status-out">OUT</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <a href="passengers.html" class="btn btn-vango-primary w-100">Confirm IN</a>
+
+            </div>
+        </main>
+
+    </div>
+
+</body>
+</html>

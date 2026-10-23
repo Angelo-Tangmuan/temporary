@@ -1,0 +1,131 @@
+/* Adds additional styles to style.css  */
+
+/* ---------- New pieces (all sizes) ---------- */
+
+/* Map placeholder */
+.map-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 14rem;                 /* phone height. Desktop is set below */
+    background-color: #e9eef5;     /* same light blue-gray as .role-toggle */
+    border-radius: 0.75rem;
+    color: var(--muted);
+}
+
+/* Plate numbers: style.css only makes these bold on desktop, but the Figma
+   shows them bold on phone and tablet too. This also fixes Dashboard on phone. */
+.van-plate {
+    font-weight: 700;
+}
+
+/* Passenger counter: [ - ]   7   [ + ] */
+.counter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+}
+
+.counter-btn {
+    width: 3.6rem;                 /* width and height must match to stay a circle */
+    height: 3.6rem;
+    border: 1.5px solid var(--navy);
+    border-radius: 50%;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.counter-minus {
+    background-color: #fff;
+    color: var(--navy);
+}
+
+.counter-plus {
+    background-color: var(--navy);
+    color: #fff;
+}
+
+.counter-btn:hover:not(:disabled) {
+    background-color: #123663;
+    color: #fff;
+}
+
+/* Shown at 0 (minus) and at full capacity (plus) */
+.counter-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.counter-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--navy);
+}
+
+/* Capacity bar: Bootstrap's .progress, recolored to match */
+.capacity-bar {
+    height: 0.6rem;
+    background-color: #e9eef5;
+}
+
+.capacity-bar .progress-bar {
+    background-color: var(--navy);
+}
+
+/* ---------- Tablet only (768px to 1280px) ----------
+   style.css has only phone and desktop layouts. This adds a middle step:
+   a narrower column, bigger header text and bigger lists. */
+@media (min-width: 768px) and (max-width: 1280px) {
+    .content-wide {
+        max-width: 40rem;          /* same width as the buttons, so everything lines up */
+    }
+
+    .mobile-header {
+        padding: 3rem 2rem 2.25rem;
+    }
+
+    .mobile-header-label {
+        font-size: 0.9rem;
+    }
+
+    .mobile-header-title {
+        font-size: 1.75rem;
+    }
+
+    .van-plate {
+        font-size: 1.125rem;
+    }
+
+    .van-row .text-muted-custom {
+        font-size: 0.9rem;
+    }
+
+    .map-box {
+        height: 20rem;
+    }
+
+    .counter-btn {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+}
+
+/* ---------- Desktop (1281px and up) ---------- */
+@media (min-width: 1281px) {
+    .map-box {
+        height: 26rem;
+    }
+
+    .counter-btn {
+        width: 4.5rem;
+        height: 4.5rem;
+        font-size: 2rem;
+    }
+
+    .counter-number {
+        font-size: 3.5rem;
+    }
+}
