@@ -83,15 +83,15 @@
         max-width: 40rem;          /* same width as the buttons, so everything lines up */
     }
 
-    .mobile-header {
+    .header {
         padding: 3rem 2rem 2.25rem;
     }
 
-    .mobile-header-label {
+    .header-label {
         font-size: 0.9rem;
     }
 
-    .mobile-header-title {
+    .header-title {
         font-size: 1.75rem;
     }
 
@@ -146,7 +146,7 @@
     .header {
         position: relative;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
     }
 
@@ -302,5 +302,55 @@
         height: 3rem;
         margin-right: 1rem;
         font-size: 2rem;
+    }
+}
+
+
+
+/* Success toast */
+.toast-vango {
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    z-index: 1080;
+    /* above the menu dropdown (1030) */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: calc(100% - 2rem);
+    padding: 0.5rem 0.875rem;
+    background-color: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    border-radius: 0.5rem;
+    color: var(--navy);
+    font-size: 0.8125rem;
+    font-weight: 600;
+
+    /* Hidden state: slightly above and invisible */
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-50%, -1rem);
+    transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+}
+
+.toast-vango.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+
+.toast-vango .bi {
+    color: #43a047;
+    font-size: 1.125rem;
+}
+
+@media (min-width: 768px) {
+    .toast-vango {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+    }
+
+    .toast-vango .bi {
+        font-size: 1.5rem;
     }
 }
