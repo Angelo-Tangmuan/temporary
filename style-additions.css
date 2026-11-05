@@ -129,3 +129,178 @@
         font-size: 3.5rem;
     }
 }
+
+
+/* =====================================================================
+   HAMBURGER MENU (based on the Figma "Menu" dropdown)
+   Lives inside .mobile-header, so it shows on phone and tablet only.
+   The desktop sidebar replaces it, because style.css hides the header there.
+   ===================================================================== */
+
+/* Everything here is inside the phone/tablet block on purpose. If the header
+   were made a flex box outside it, it would stop being hidden on desktop. */
+@media (max-width: 1280px) {
+
+    /* Title on the left, menu button on the right. position: relative lets the
+       dropdown panel be placed against the header instead of against the button. */
+    .header {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Bootstrap makes .dropdown position: relative. Undo that so the panel
+       below is placed against the header, not the small button. */
+    .header .dropdown {
+        position: static;
+    }
+
+    /* The yellow rounded square with three bars */
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.2rem;
+        width: 2.25rem;
+        height: 2.25rem;
+        padding: 0 0.5rem;
+        border: 0;
+        border-radius: 0.5rem;
+        background-color: var(--yellow);
+    }
+
+    .menu-bar {
+        display: block;
+        height: 0.2rem;
+        border-radius: 1rem;
+        background-color: var(--navy);
+    }
+
+    /* The panel. Because it is position: absolute it floats ON TOP of the page
+       and does not push anything down.
+       top: 100% = bottom edge of the header. The extra 6px is the yellow border
+       (match it to .mobile-header's border-bottom) and 0.5rem is the gap.
+       right: 1.25rem lines up with the header's side padding. */
+    .header .menu-panel {
+        top: calc(100% + 6px + 0.5rem);
+        right: 1.25rem;
+        left: auto;
+        width: 13rem;
+        margin: 0;
+        padding: 0.75rem;
+        border: 0;
+        border-radius: 0.75rem;
+        background-color: var(--cream);
+        box-shadow: 0 0.5rem 1.5rem rgba(11, 37, 69, 0.25);
+    }
+
+    /* Each button in the panel (white box, thin border, navy bold text, icon) */
+    .menu-panel li+li {
+        margin-top: 0.625rem;
+    }
+
+    .menu-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.625rem 0.5rem;
+        border: 1px solid #d9e0ea;
+        border-radius: 0.5rem;
+        background-color: #fff;
+        color: var(--navy);
+        font-size: 0.8125rem;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    .menu-item:hover,
+    .menu-item:focus-visible {
+        background-color: var(--navy);
+        color: #fff;
+    }
+
+    .menu-item .bi {
+        font-size: 1rem;
+    }
+}
+
+/* Bigger panel on tablet, like the larger Figma "Menu" version */
+@media (min-width: 768px) and (max-width: 1280px) {
+    .header .menu-panel {
+        right: 2rem;
+        /* matches the tablet header padding above */
+        width: 22rem;
+        padding: 1rem;
+    }
+
+    .menu-panel li+li {
+        margin-top: 0.875rem;
+    }
+
+    .menu-item {
+        padding: 1rem 0.75rem;
+        font-size: 1.125rem;
+    }
+
+    .menu-item .bi {
+        font-size: 1.5rem;
+    }
+
+    .menu-toggle {
+        width: 3rem;
+        height: 3rem;
+        padding: 0 0.65rem;
+    }
+}
+
+
+
+/* =====================================================================
+   BACK BUTTON (the "<" arrow on the left of the header, from the Figma)
+   Sits inside .mobile-header, so it shows on phone and tablet only.
+   ===================================================================== */
+@media (max-width: 1280px) {
+
+    /* Pushes the menu button to the far right. With the back arrow added there are
+       three items in the header, and without this the title would drift to the
+       middle. margin-left: auto takes all the free space on the left of the menu.
+       It does nothing harmful on pages that have no menu button. */
+    .header .dropdown {
+        margin-left: auto;
+    }
+
+    .back-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.25rem;
+        /* same size as the menu button, so they line up */
+        height: 2.25rem;
+        margin-right: 0.75rem;
+        /* gap between the arrow and the title */
+        margin-left: -0.5rem;
+        /* pulls the arrow slightly left, like the Figma */
+        color: #fff;
+        font-size: 1.5rem;
+        text-decoration: none;
+        -webkit-text-stroke: 1.5px currentColor;
+        /* makes the thin arrow bolder */
+    }
+
+    .back-btn:hover,
+    .back-btn:focus-visible {
+        color: var(--yellow);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+    .back-btn {
+        width: 3rem;
+        /* matches the bigger tablet menu button */
+        height: 3rem;
+        margin-right: 1rem;
+        font-size: 2rem;
+    }
+}
