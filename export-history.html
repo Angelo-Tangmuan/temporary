@@ -11,38 +11,42 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <link href="style-additions.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
 <body>
 
     <div class="app-shell">
+        <header class="header">
+            <a href="admin.html" class="back-btn"><i class="bi bi-chevron-left"></i></a>
+            <div>
+                <p class="header-label mb-1">Admin</p>
+                <h1 class="header-title mb-0">Export History</h1>
+            </div>
 
-        <!-- Header (phone and tablet; hidden on desktop by style.css) -->
-        <header class="mobile-header">
-            <p class="mobile-header-label mb-1">Admin</p>
-            <h1 class="mobile-header-title mb-0">Export History</h1>
-        </header>
+            <div class="dropdown">
+                <button class="menu-toggle" type="button" data-bs-toggle="dropdown" data-bs-display="static">
+                    <span class="menu-bar"></span>
+                    <span class="menu-bar"></span>
+                    <span class="menu-bar"></span>
+                </button>
 
-        <!-- Sidebar (desktop only) -->
-        <aside class="sidebar flex-shrink-0 p-4">
-            <a href="index.html" class="sidebar-brand text-white text-decoration-none">VanGo</a>
-            <nav>
-                <ul class="nav flex-column mt-4">
-                    <li class="nav-item"><span class="nav-link px-0">Passenger</span></li>
-                    <li class="nav-item active"><span class="nav-link px-0">Admin</span></li>
-                    <li class="nav-item"><span class="nav-link px-0">Driver / Operator</span></li>
+                <ul class="dropdown-menu menu-panel">
+                    <li><a class="menu-item" href="create-account.html"><i class="bi bi-person-circle"></i>Create Account</a>
+                    </li>
+                    <li><a class="menu-item" href="register-van.html"><i class="bi bi-truck-front-fill"></i>Register a Van</a>
+                    </li>
+                    <li><a class="menu-item" href="registered-vans.html"><i class="bi bi-card-list"></i>View Registered Vans</a>
+                    </li>
+                    <li><a class="menu-item" href="live-map.html"><i class="bi bi-geo-alt-fill"></i>Open Live Van Map</a></li>
+                    <li><a class="menu-item" href="export-history.html"><i class="bi bi-box-arrow-up-right"></i>Export IN/OUT
+                            History</a></li>
                 </ul>
-            </nav>
-        </aside>
+            </div>
+        </header>
 
         <!-- Main content -->
         <main class="main main-top flex-grow-1">
             <div class="content-wide mx-auto d-flex flex-column gap-4">
-
-                <!-- Heading (desktop only) -->
-                <div class="custom-block">
-                    <p class="text-muted-custom mb-1">Admin</p>
-                    <h1 class="page-title mb-0">Export History</h1>
-                </div>
 
                 <!-- History list: one row per trip -->
                 <div class="van-list">
@@ -68,6 +72,6 @@
         </main>
 
     </div>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
