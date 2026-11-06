@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VanIt | Available Vans</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="style-additions.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-shell">
+        <header class="header">
+            <a href="index.html" class="back-btn"><i class="bi bi-chevron-left"></i></a>
+            <div>
+                <p class="header-label mb-1">Olivarez Terminal</p>
+                <h1 class="header-title mb-0">Available Vans</h1>
+            </div>
+        </header>
+
+        <main class="main main-top flex-grow-1">
+            <div class="content-wide mx-auto d-flex flex-column gap-4">
+
+                <div class="role-toggle">
+                    <input type="radio" class="btn-check" name="route" id="route-lipa" value="lipa" checked>
+                    <label class="role-option" for="route-lipa">Lipa</label>
+
+                    <input type="radio" class="btn-check" name="route" id="route-san-pablo" value="san-pablo">
+                    <label class="role-option" for="route-san-pablo">San Pablo</label>
+                </div>
+
+                <!-- WAITING. -->
+                <section>
+                    <h2 class="section-label">Waiting</h2>
+                    <div class="van-list">
+
+                        <!-- Lipa -->
+                        <div class="van-row d-flex justify-content-between align-items-center" data-route="lipa">
+                            <div>
+                                <div class="van-plate">ABC 1234</div>
+                                <div class="text-muted-custom">Avg. departure time: 15 mins left</div>
+                            </div>
+                            <div class="van-meter">
+                                <div class="van-meter-text">7/16 passengers</div>
+                                <div class="progress capacity-bar" role="progressbar" aria-label="Passengers boarded"
+                                     aria-valuenow="7" aria-valuemin="0" aria-valuemax="16">
+                                    <div class="progress-bar" style="width: 43.75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="van-row d-flex justify-content-between align-items-center" data-route="lipa">
+                            <div class="van-plate">XYZ 5678</div>
+                            <span class="pill pill-in">Waiting</span>
+                        </div>
+                        <div class="van-row d-flex justify-content-between align-items-center" data-route="lipa">
+                            <div class="van-plate">JKL 7890</div>
+                            <span class="pill pill-in">Waiting</span>
+                        </div>
+
+                        <!-- San Pablo -->
+                        <div class="van-row d-flex justify-content-between align-items-center" data-route="san-pablo">
+                            <div>
+                                <div class="van-plate">PQR 3344</div>
+                                <div class="text-muted-custom">Avg. departure time: 5 mins left</div>
+                            </div>
+                            <div class="van-meter">
+                                <div class="van-meter-text">12/16 passengers</div>
+                                <div class="progress capacity-bar" role="progressbar" aria-label="Passengers boarded"
+                                     aria-valuenow="12" aria-valuemin="0" aria-valuemax="16">
+                                    <div class="progress-bar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="van-row d-flex justify-content-between align-items-center" data-route="san-pablo">
+                            <div class="van-plate">STU 5566</div>
+                            <span class="pill pill-in">Waiting</span>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- DEPARTED -->
+                <section>
+                    <h2 class="section-label">Departed</h2>
+                    <div class="van-list">
+
+                        <div class="van-row d-flex justify-content-between align-items-center" data-route="lipa">
+                            <div>
+                                <div class="van-plate">DEF 9012</div>
+                                <div class="text-muted-custom">Heading to Lipa</div>
+                            </div>
+                            <span class="pill pill-out">ETA: 12 mins</span>
+                        </div>
+
+                        <div class="van-row d-flex justify-content-between align-items-center" data-route="san-pablo">
+                            <div>
+                                <div class="van-plate">GHI 3456</div>
+                                <div class="text-muted-custom">Heading to San Pablo</div>
+                            </div>
+                            <span class="pill pill-out">ETA: 30 mins</span>
+                        </div>
+
+                    </div>
+                    <p class="list-note">ETA based on GPS and Google Maps</p>
+                </section>
+
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        // Shows only the vans of the selected route.
+        // Uses Bootstrap's d-none class (a plain "hidden" attribute loses to d-flex).
+        var routeInputs = document.querySelectorAll('input[name="route"]');
+        var vanRows = document.querySelectorAll('[data-route]');
+
+        function filterByRoute() {
+            var route = document.querySelector('input[name="route"]:checked').value;
+            vanRows.forEach(function (row) {
+                row.classList.toggle('d-none', row.dataset.route !== route);
+            });
+        }
+
+        routeInputs.forEach(function (input) {
+            input.addEventListener('change', filterByRoute);
+        });
+        filterByRoute();
+    </script>
+
+</body>
+</html>

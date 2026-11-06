@@ -354,3 +354,139 @@
         font-size: 1.5rem;
     }
 }
+
+
+
+/* Styles for the commuter's "Available Vans" page.
+   Paste at the end of style-additions.css. Reuses .van-list, .van-row, .pill,
+   .capacity-bar and .role-toggle from your existing files. */
+
+/* ---------- All sizes (phone first) ---------- */
+
+/* WAITING / DEPARTED labels above each list */
+.section-label {
+    margin: 0 0 0.5rem 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.list-note {
+    margin: 0.75rem 0 0 0.25rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+}
+
+/* Divider lines between rows. style.css draws them with ".van-row + .van-row", which
+   breaks when the route filter hides the first row. This draws a line only between
+   rows that are actually visible. */
+.van-list .van-row+.van-row {
+    border-top: 0;
+}
+
+.van-list .van-row:not(.d-none)~.van-row:not(.d-none) {
+    border-top: 1px solid #e5e7eb;
+}
+
+/* Smaller pills inside rows (the base .pill is sized for the Dashboard) */
+.van-row .pill {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+}
+
+/* "7/16 passengers" with a thin yellow bar under it */
+.van-meter {
+    width: 7rem;
+    flex-shrink: 0;
+}
+
+.van-meter-text {
+    margin-bottom: 0.25rem;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    text-align: right;
+    color: #1a1f2b;
+}
+
+.van-meter .capacity-bar {
+    height: 0.375rem;
+}
+
+.van-meter .capacity-bar .progress-bar {
+    background-color: var(--yellow);
+}
+
+/* ---------- Tablet (768px to 1280px) ---------- */
+@media (min-width: 768px) and (max-width: 1280px) {
+    .section-label {
+        font-size: 0.8125rem;
+    }
+
+    .list-note {
+        font-size: 0.875rem;
+    }
+
+    .van-row .pill {
+        padding: 0.3rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .van-meter {
+        width: 9rem;
+    }
+
+    .van-meter-text {
+        font-size: 1rem;
+    }
+}
+
+/* ---------- Desktop (1281px and up) ---------- */
+@media (min-width: 1281px) {
+    .section-label {
+        font-size: 0.75rem;
+    }
+
+    .list-note {
+        font-size: 0.875rem;
+    }
+
+    .van-row .pill {
+        padding: 0.3rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .van-meter {
+        width: 10rem;
+    }
+
+    .van-meter-text {
+        font-size: 1rem;
+    }
+
+    /* Back arrow on desktop (Figma: far left of the header, vertically centered).
+       style-additions.css only styles .back-btn on phone and tablet, so on desktop it
+       would sit above the title. This applies to every page that uses .back-btn.
+       .header is already position: relative on desktop. */
+    .back-btn {
+        position: absolute;
+        top: 50%;
+        left: 2.5rem;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.75rem;
+        height: 3.75rem;
+        color: #fff;
+        font-size: 2.25rem;
+        text-decoration: none;
+        -webkit-text-stroke: 1.5px currentColor;
+    }
+
+    .back-btn:hover,
+    .back-btn:focus-visible {
+        color: var(--yellow);
+    }
+}
